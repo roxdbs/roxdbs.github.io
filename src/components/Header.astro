@@ -1,0 +1,246 @@
+---
+// En-tête fixe : logo/nom (retour accueil) + navigation.
+// Les pages /projets, /a-propos et /contact seront créées à l'étape suivante ;
+// tant qu'elles n'existent pas, ces liens afficheront une 404 en local, ce qui
+// est normal à ce stade du développement.
+const navItems = [
+    { href: "/projets", label: "Projets" },
+    { href: "/a-propos", label: "À propos" },
+    { href: "/contact", label: "Contact" },
+];
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+    <div class="container site-header__inner">
+        <a href="/" class="site-header__brand">
+            <img
+                src="/logo-rd.svg"
+                alt=""
+                aria-hidden="true"
+                class="site-header__mark"
+                width="56"
+                height="32"
+            />
+            <span>Roxane Dubus</span>
+        </a>
+        <!-- Navigation classique : visible à partir de 640px -->
+        <nav aria-label="Navigation principale" class="nav-desktop">
+            <ul class="site-header__nav">
+                {
+                    navItems.map((item) => (
+                        <li>
+                            <a
+                                href={item.href}
+                                aria-current={
+                                    currentPath === item.href
+                                        ? "page"
+                                        : undefined
+                                }
+                            >
+                                {item.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+
+        <!-- Menu déroulant : visible en dessous de 640px.
+         <details>/<summary> s'ouvre et se ferme nativement,
+         au clic comme au clavier, sans JavaScript. -->
+        <details class="nav-mobile">
+            <summary aria-label="Ouvrir le menu de navigation">
+                <span class="nav-mobile__icon" aria-hidden="true">
+                    <span></span><span></span><span></span>
+                </span>
+                Menu
+            </summary>
+            <ul class="site-header__nav">
+                {
+                    navItems.map((item) => (
+                        <li>
+                            <a
+                                href={item.href}
+                                aria-current={
+                                    currentPath === item.href
+                                        ? "page"
+                                        : undefined
+                                }
+                            >
+                                {item.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </details>
+    </div>
+</header>
+
+<style>
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+    }
+
+    .site-header__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2) var(--space-4);
+        padding-block: var(--space-2);
+    }
+
+    /* --- Navigation desktop (liste horizontale) --- */
+    .nav-desktop {
+        display: block;
+    }
+
+    /* --- Menu déroulant mobile --- */
+    .nav-mobile {
+        display: none; /* masqué par défaut, activé en dessous de 640px */
+        position: relative;
+    }
+
+    .nav-mobile summary {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        list-style: none; /* enlève le triangle par défaut de <summary> */
+        cursor: pointer;
+        padding: var(--space-2) var(--space-3);
+        font-family: var(--font-heading);
+        font-weight: 500;
+        border-radius: var(--radius-sm);
+    }
+
+    .nav-mobile summary::-webkit-details-marker {
+        display: none; /* enlève le triangle par défaut (Safari/Chrome) */
+    }
+
+    .nav-mobile summary:hover,
+    .nav-mobile summary:focus-visible {
+        background-color: var(--color-bg-muted);
+    }
+
+    .nav-mobile__icon {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        width: 1.25rem;
+    }
+
+    .nav-mobile__icon span {
+        display: block;
+        height: 2px;
+        background-color: var(--color-text);
+        border-radius: 1px;
+    }
+
+    /* Le menu ouvert s'affiche en dropdown, aligné à droite */
+    .nav-mobile[open] .site-header__nav {
+        position: absolute;
+        top: calc(100% + var(--space-2));
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3); /* plus resserré qu'en ligne horizontale */
+        width: max-content; /* s'ajuste au texte le plus large, sans vide */
+        max-width: 14rem;
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
+        padding: var(--space-3) var(--space-4);
+        z-index: 20;
+    }
+
+    /* Chaque lien occupe toute la largeur du dropdown : zone de clic
+     plus grande, cohérent avec le reste du site (loi de Fitts). */
+    .nav-mobile[open] .site-header__nav a {
+        display: block;
+        padding-block: var(--space-1);
+    }
+
+    @media (max-width: 40rem) {
+        .nav-desktop {
+            display: none;
+        }
+        .nav-mobile {
+            display: block;
+        }
+    }
+
+    .site-header__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-family: var(--font-heading);
+        font-weight: 700;
+        font-size: var(--text-lg);
+        color: var(--color-accent);
+        text-decoration: none;
+        /* agrandit la zone cliquable sans agrandir le texte (loi de Fitts) */
+        padding-block: var(--space-2);
+    }
+
+    .site-header__mark {
+        height: 1.75rem;
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    .site-header__nav {
+        display: flex;
+        list-style: none;
+        gap: var(--space-5);
+        margin: 0;
+        padding: 0;
+    }
+
+    .site-header__nav a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .site-header__nav a:hover,
+    .site-header__nav a:focus-visible {
+        color: var(--color-accent);
+    }
+
+    .site-header__nav a[aria-current="page"] {
+        color: var(--color-accent);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+</style>
+
+<script>
+    // Ferme le menu mobile si on clique en dehors, ou si on appuie sur Échap.
+    // Cliquer sur un lien ferme le menu naturellement, puisque la page change.
+    const menu = document.querySelector<HTMLDetailsElement>(".nav-mobile");
+
+    if (menu) {
+        document.addEventListener("click", (event) => {
+            if (menu.open && !menu.contains(event.target as Node)) {
+                menu.removeAttribute("open");
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && menu.open) {
+                menu.removeAttribute("open");
+            }
+        });
+    }
+</script>

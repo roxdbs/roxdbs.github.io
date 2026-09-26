@@ -1,0 +1,160 @@
+/*
+  Design tokens — Portfolio Roxane Dubus
+
+  Règle : le CSS du site n'utilise QUE ces variables (var(--...)),
+  jamais de couleur ou de taille écrite en dur. Pour changer l'identité
+  visuelle plus tard, on modifie ce seul fichier.
+*/
+
+:root {
+  /* ---------- Palette de couleurs ---------- */
+  --color-framboise-400: #D9A9BE;
+  /* pastel clair, décor uniquement */
+  --color-framboise-500: #C25E86;
+  /* accents moyens */
+  --color-framboise-600: #AB274F;
+  /* couleur principale : liens, titres */
+  --color-framboise-700: #8F1F42;
+  /* survol / état actif */
+
+  --color-orange-500: #E44D2E;
+  /* accent rare, grands titres uniquement */
+  --color-orange-600: #DA3C1C;
+  /* accent rare, texte de taille normale */
+
+  /* ---------- Neutres ---------- */
+  --color-ink: #1F1B24;
+  /* texte courant */
+  --color-ink-soft: #4A4550;
+  /* texte secondaire, légendes */
+  --color-white: #FFFFFF;
+  --color-cream: #FAF6F2;
+  /* fond de page alternatif */
+  --color-beige-light: #F1EAE3;
+  /* encadrés clairs */
+  --color-beige: #E0D4C9;
+  /* encadrés, fond du logo */
+
+  /* ---------- Rôles sémantiques (mode clair) ---------- */
+  --color-bg: var(--color-white);
+  --color-bg-muted: var(--color-beige-light);
+  --color-surface: var(--color-white);
+  /* fond des cartes */
+  --color-border: var(--color-beige);
+  --color-text: var(--color-ink);
+  --color-text-muted: var(--color-ink-soft);
+  --color-accent: var(--color-framboise-600);
+  --color-accent-hover: var(--color-framboise-700);
+  --color-accent-contrast: var(--color-white);
+  /* texte sur bouton accent */
+  --color-accent-rare: var(--color-orange-600);
+  /* usage exceptionnel */
+
+  /* Emplacement prêt pour le mode sombre : voir bloc
+     @media (prefers-color-scheme: dark) plus bas.
+     Ne pas remplir avant d'avoir vérifié les contrastes. */
+
+  /* ---------- Typographie ---------- */
+  /* Atkinson Hyperlegible pour le texte courant : I majuscule et l minuscule
+     bien distincts (empattements), contrairement à DM Sans. Choix vérifié
+     par test visuel le 25/09/2026 (voir fiche de conception). */
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  /* logo et titres */
+
+  --text-xs: 0.8rem;
+  /* mentions légales, légendes */
+  --text-sm: 0.9rem;
+  /* texte secondaire */
+  --text-base: 1rem;
+  /* texte courant */
+  --text-lg: 1.15rem;
+  /* intro, accroche courte */
+  /* clamp(min, préféré, max) : la taille suit la largeur d'écran,
+     entre les bornes min et max, sans media query à dupliquer. */
+  --text-xl: clamp(1.25rem, 1rem + 1vw, 1.5rem);
+  /* sous-titre, H3 */
+  --text-2xl: clamp(1.5rem, 1.1rem + 1.5vw, 2rem);
+  /* H2 */
+  --text-3xl: clamp(1.75rem, 1.2rem + 2.5vw, 2.75rem);
+  /* H1 accueil */
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  /* corps de texte : jamais en dessous */
+  --leading-relaxed: 1.65;
+
+  --measure: 68ch;
+  /* largeur max d'un bloc de texte : ~60-75 caractères par ligne */
+
+  /* ---------- Espacements (échelle régulière) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+
+  /* ---------- Mise en forme ---------- */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(31, 27, 36, 0.06);
+  --shadow-md: 0 4px 12px rgba(31, 27, 36, 0.08);
+
+  --container-max: 72rem;
+  /* largeur max du contenu */
+  --header-height: 4rem;
+
+  /* ---------- Mouvement ---------- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --ease-standard: ease-in-out;
+}
+
+/* Respecte les personnes sensibles au mouvement (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+  Mode sombre — À ACTIVER PLUS TARD, une fois le site clair terminé.
+  Les valeurs ci-dessous sont des pistes déjà vérifiées pour le contraste
+  (ratio ≥ 4,5:1 sur les fonds indiqués), à affiner en conditions réelles
+  avant de les utiliser :
+
+  --color-framboise-600 (clair) → #D9587F (sombre)
+  --color-orange-600 (clair)    → #E55133 (sombre)
+  Fond de page sombre : #15121A
+  Fond des cartes sombre : #1E1A22
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #15121A;
+      --color-surface: #1E1A22;
+      --color-border: #332C3B;
+      --color-text: #F2EDE9;
+      --color-text-muted: #C9C2CE;
+      --color-accent: #D9587F;
+      --color-accent-hover: #E37B98;
+      --color-accent-contrast: #15121A;
+      --color-accent-rare: #E55133;
+    }
+  }
+*/

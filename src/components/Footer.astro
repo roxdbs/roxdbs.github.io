@@ -1,0 +1,51 @@
+---
+const email = "roxane.dubus4@gmail.com";
+const linkedin = "https://www.linkedin.com/in/roxane-dubus-404545359";
+const github = "https://github.com/roxdbs";
+---
+
+<footer class="site-footer">
+    <div class="container site-footer__inner">
+        <p class="site-footer__contact">
+            <a href={`mailto:${email}`}>{email}</a>
+            <span aria-hidden="true"> · </span>
+            <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                LinkedIn
+            </a>
+            <span aria-hidden="true"> · </span>
+            <a href={github} target="_blank" rel="noopener noreferrer">
+                GitHub
+            </a>
+        </p>
+        <p class="site-footer__legal">
+            <a href="/mentions-legales">Mentions légales</a>
+        </p>
+    </div>
+</footer>
+
+<style>
+    .site-footer {
+        border-top: 1px solid var(--color-border);
+        margin-top: var(--space-12);
+        padding-block: var(--space-6);
+    }
+
+    .site-footer__inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: var(--space-3);
+        font-size: var(--text-sm);
+        color: var(--color-text-muted);
+    }
+
+    .site-footer__contact a,
+    .site-footer__legal a {
+        color: var(--color-text-muted);
+    }
+
+    .site-footer__contact a:hover,
+    .site-footer__legal a:hover {
+        color: var(--color-accent);
+    }
+</style>
