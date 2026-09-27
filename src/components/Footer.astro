@@ -102,6 +102,12 @@ const year = new Date().getFullYear();
         margin-top: var(--space-12);
     }
 
+    /* Sur ce fond framboise, l'anneau de focus framboise par défaut
+     ne se verrait pas : on le repasse en blanc ici. */
+    .site-footer :focus-visible {
+        outline-color: var(--color-white);
+    }
+
     .site-footer__inner {
         display: flex;
         flex-direction: column;
@@ -147,7 +153,7 @@ const year = new Date().getFullYear();
 
     .site-footer__item a:hover,
     .site-footer__item a:focus-visible {
-        background-color: rgba(255, 255, 255, 0.18);
+        background-color: var(--color-on-accent-wash);
     }
 
     .site-footer__legal {
@@ -159,9 +165,6 @@ const year = new Date().getFullYear();
     .site-footer__legal a {
         color: var(--color-white);
         text-decoration: none;
-    }
-
-    .site-footer__legal a:hover {
         text-decoration: underline;
         text-underline-offset: 3px;
     }

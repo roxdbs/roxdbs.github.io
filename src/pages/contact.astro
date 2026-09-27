@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const email = "roxane.dubus4@gmail.com";
+const linkedin = "https://www.linkedin.com/in/roxane-dubus-404545359";
+---
+
+<BaseLayout
+    title="Me contacter"
+    description="Contacter Roxane Dubus par e-mail ou LinkedIn."
+>
+    <section class="section">
+        <h1>Me contacter</h1>
+        <p>
+            Pour en apprendre davantage ou si vous avez des questions, n'hésitez
+            pas à me contacter.
+        </p>
+        <p>
+            <a href={`mailto:${email}`} class="button button--primary">
+                M'écrire un e-mail
+            </a>
+            <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button button--secondary"
+            >
+                Me contacter sur LinkedIn
+            </a>
+        </p>
+    </section>
+</BaseLayout>

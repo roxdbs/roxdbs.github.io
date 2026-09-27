@@ -84,7 +84,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <style>
 	.hero {
 		padding: var(--space-6) var(--space-6);
-		max-width: 42rem;
+		max-width: 45rem;
 		background-color: var(--color-bg-muted); /* beige clair */
 		border-radius: var(--radius-md);
 	}
@@ -100,6 +100,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 	}
 
 	.hero__title {
+		max-width: 24ch;
 		margin-bottom: var(--space-5);
 		color: var(--color-accent);
 	}
@@ -140,8 +141,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 	.hero__quick-link:hover,
 	.hero__quick-link:focus-visible {
-		background-color: var(--color-accent);
-		color: var(--color-white);
+		background-color: var(--color-surface);
+		color: var(--color-accent-hover);
 	}
 
 	.section {

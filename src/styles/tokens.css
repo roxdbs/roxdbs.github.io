@@ -50,6 +50,10 @@
   --color-accent-rare: var(--color-orange-600);
   /* usage exceptionnel */
 
+  /* Voile blanc semi-transparent pour un survol sur fond framboise,
+     dérivé de --color-white (pas une couleur brute nouvelle) */
+  --color-on-accent-wash: color-mix(in srgb, var(--color-white) 18%, transparent);
+
   /* Emplacement prêt pour le mode sombre : voir bloc
      @media (prefers-color-scheme: dark) plus bas.
      Ne pas remplir avant d'avoir vérifié les contrastes. */
