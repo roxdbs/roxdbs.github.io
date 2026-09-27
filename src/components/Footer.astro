@@ -1,51 +1,168 @@
 ---
+// Fond framboise, icônes en cercle blanc. Ajuste les liens avant publication.
 const email = "roxane.dubus4@gmail.com";
 const linkedin = "https://www.linkedin.com/in/roxane-dubus-404545359";
 const github = "https://github.com/roxdbs";
+const phoneHref = "+33788097848";
+const phoneDisplay = "07 88 09 78 48";
+const location = "Grenoble";
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
     <div class="container site-footer__inner">
-        <p class="site-footer__contact">
-            <a href={`mailto:${email}`}>{email}</a>
-            <span aria-hidden="true"> · </span>
-            <a href={linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn
-            </a>
-            <span aria-hidden="true"> · </span>
-            <a href={github} target="_blank" rel="noopener noreferrer">
-                GitHub
-            </a>
-        </p>
+        <ul class="site-footer__list">
+            <li class="site-footer__item">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    aria-hidden="true"
+                >
+                    <path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"
+                    ></path>
+                    <circle cx="12" cy="10" r="2.5"></circle>
+                </svg>
+                <span>{location}</span>
+            </li>
+            <li class="site-footer__item">
+                <a href={`tel:${phoneHref}`}>
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M4 5c0-.6.4-1 1-1h3l2 5-2 1a10 10 0 0 0 5 5l1-2 5 2v3c0 .6-.4 1-1 1A15 15 0 0 1 4 5Z"
+                        ></path>
+                    </svg>
+                    <span>{phoneDisplay}</span>
+                </a>
+            </li>
+            <li class="site-footer__item">
+                <a href={`mailto:${email}`}>
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        aria-hidden="true"
+                    >
+                        <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                        <path d="m4 7 8 6 8-6"></path>
+                    </svg>
+                    <span>{email}</span>
+                </a>
+            </li>
+            <li class="site-footer__item">
+                <a href={linkedin} target="_blank" rel="noopener noreferrer">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3.5a1.96 1.96 0 1 0 0 3.92 1.96 1.96 0 0 0 0-3.92ZM20.44 20h-3.37v-5.6c0-1.34-.03-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.68V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.2-1.75 3.42 0 4.05 2.25 4.05 5.18V20Z"
+                        ></path>
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
+            </li>
+            <li class="site-footer__item">
+                <a href={github} target="_blank" rel="noopener noreferrer">
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.03a9.5 9.5 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.55 1.37.2 2.39.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"
+                        ></path>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </li>
+        </ul>
+
         <p class="site-footer__legal">
             <a href="/mentions-legales">Mentions légales</a>
+            <span aria-hidden="true"> · </span>
+            © {year} Roxane Dubus
         </p>
     </div>
 </footer>
 
 <style>
     .site-footer {
-        border-top: 1px solid var(--color-border);
+        background-color: var(--color-accent); /* framboise */
+        color: var(--color-white);
         margin-top: var(--space-12);
-        padding-block: var(--space-6);
     }
 
     .site-footer__inner {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-5);
+        padding-block: var(--space-8);
+        text-align: center;
+    }
+
+    .site-footer__list {
+        display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        gap: var(--space-3);
+        justify-content: center;
+        gap: var(--space-2) var(--space-5);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .site-footer__item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        font-size: var(--text-base);
+    }
+
+    .site-footer__item svg {
+        width: 1.35rem;
+        height: 1.35rem;
+        flex-shrink: 0;
+    }
+
+    .site-footer__item a {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        color: var(--color-white);
+        text-decoration: none;
+        padding: var(--space-1) var(--space-2);
+        border-radius: var(--radius-full);
+        margin: calc(-1 * var(--space-1)) calc(-1 * var(--space-2));
+    }
+
+    .site-footer__item a:hover,
+    .site-footer__item a:focus-visible {
+        background-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .site-footer__legal {
         font-size: var(--text-sm);
-        color: var(--color-text-muted);
+        color: var(--color-white);
+        opacity: 0.9;
     }
 
-    .site-footer__contact a,
     .site-footer__legal a {
-        color: var(--color-text-muted);
+        color: var(--color-white);
+        text-decoration: none;
     }
 
-    .site-footer__contact a:hover,
     .site-footer__legal a:hover {
-        color: var(--color-accent);
+        text-decoration: underline;
+        text-underline-offset: 3px;
     }
 </style>

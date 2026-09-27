@@ -73,6 +73,13 @@ img {
     display: block;
 }
 
+main.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding-block-start: var(--space-6);
+}
+
 .container {
     width: min(100% - 2 * var(--space-5), var(--container-max));
     margin-inline: auto;
