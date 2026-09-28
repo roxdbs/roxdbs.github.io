@@ -5,7 +5,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="Accueil">
 	<section class="hero">
 		<p class="hero__eyebrow">
-			Sciences cognitives appliquées · Conception centrée utilisateurs
+			Sciences cognitives appliquées · Conception centrée sur l'humain
 		</p>
 		<h1 class="hero__title">
 			Comprendre le fonctionnement humain pour concevoir des solutions
@@ -58,26 +58,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		</div>
 	</section>
 
-	<section class="section">
-		<h2>Mon approche</h2>
-		<p>
-			À écrire : une ou deux phrases sur ma façon de travailler, reliées à
-			un exemple concret.
-		</p>
-		<a href="/a-propos" class="button button--secondary">
-			Découvrir mon parcours et mon approche
-		</a>
-	</section>
+	<section class="section approach">
+		<div class="approach__text">
+			<h2>Mon approche</h2>
+			<p>
+				Pour moi, les sciences cognitives appliquées servent à
+				comprendre comment les gens perçoivent, décident et agissent,
+				afin d'améliorer concrètement des situations réelles. Deux axes
+				m'intéressent :
+			</p>
+			<ul>
+				<li>
+					améliorer les façons de travailler dans les organisations
+					(gestion de projet, travail en équipe, pratiques de travail)
+				</li>
+				<li>
+					mieux concevoir des solutions en intégrant les besoins, les
+					comportements et les capacités de leurs utilisatrices et
+					utilisateurs.
+				</li>
+			</ul>
+			<p>
+				Je cherche un métier où cette démarche produit des résultats
+				concrets et visibles, en ingénierie cognitive, en cognitique ou
+				en UX Research.
+			</p>
+			<a href="/a-propos" class="button button--secondary">
+				Découvrir mon parcours
+			</a>
+		</div>
 
-	<section class="section">
-		<h2>Quelques projets</h2>
-		<p>
-			À remplacer par 2-3 cartes de projet (image, titre, une ligne de
-			résultat).
-		</p>
-		<a href="/projets" class="button button--secondary">
-			Voir tous les projets
-		</a>
+		<!-- Emplacement du schéma Figma : à remplacer par l'image exportée -->
+		<div class="approach__figure" aria-hidden="true"></div>
 	</section>
 </BaseLayout>
 
@@ -161,6 +173,41 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		}
 		.section {
 			padding-block: var(--space-5);
+		}
+	}
+
+	.approach {
+		display: grid;
+		grid-template-columns: minmax(0, min(var(--measure), 60%)) minmax(
+				0,
+				1fr
+			);
+		gap: var(--space-8);
+		align-items: center;
+	}
+
+	.approach__text {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-4);
+	}
+
+	.approach__text > * {
+		margin-block: 0;
+	}
+
+	.approach__figure {
+		min-height: 16rem;
+		border: 1.5px dashed var(--color-border);
+		border-radius: var(--radius-md);
+		background-color: var(--color-bg-muted);
+	}
+
+	/* En dessous de cette largeur, on empile : texte d'abord, schéma ensuite */
+	@media (max-width: 48rem) {
+		.approach {
+			grid-template-columns: minmax(0, 1fr);
 		}
 	}
 </style>
