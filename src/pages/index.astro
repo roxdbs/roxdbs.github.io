@@ -132,6 +132,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 		border-radius: var(--radius-full);
 		color: var(--color-accent);
 		flex-shrink: 0;
+		transition:
+			background-color var(--duration-base) var(--ease-standard),
+			color var(--duration-base) var(--ease-standard);
 	}
 
 	.hero__quick-link svg {
@@ -141,7 +144,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 	.hero__quick-link:hover,
 	.hero__quick-link:focus-visible {
-		background-color: var(--color-surface);
+		background-color: var(--color-beige);
 		color: var(--color-accent-hover);
 	}
 

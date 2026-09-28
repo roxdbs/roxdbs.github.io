@@ -149,6 +149,7 @@ const year = new Date().getFullYear();
         padding: var(--space-1) var(--space-2);
         border-radius: var(--radius-full);
         margin: calc(-1 * var(--space-1)) calc(-1 * var(--space-2));
+        transition: background-color var(--duration-base) var(--ease-standard);
     }
 
     .site-footer__item a:hover,
@@ -164,7 +165,6 @@ const year = new Date().getFullYear();
 
     .site-footer__legal a {
         color: var(--color-white);
-        text-decoration: none;
         text-decoration: underline;
         text-underline-offset: 3px;
     }
