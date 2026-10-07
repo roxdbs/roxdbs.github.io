@@ -62,7 +62,7 @@
   /* Atkinson Hyperlegible pour le texte courant : I majuscule et l minuscule
      bien distincts (empattements), contrairement à DM Sans. Choix vérifié
      par test visuel le 25/09/2026 (voir fiche de conception). */
-  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --font-body: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
   --font-heading: 'DM Sans', system-ui, sans-serif;
   /* logo et titres */
 

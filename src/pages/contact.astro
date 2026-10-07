@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 const email = "roxane.dubus4@gmail.com";
 const linkedin = "https://www.linkedin.com/in/roxane-dubus-404545359";
+const phoneHref = "+33788097848";
 ---
 
 <BaseLayout
@@ -10,11 +11,12 @@ const linkedin = "https://www.linkedin.com/in/roxane-dubus-404545359";
 >
     <section class="section">
         <h1>Me contacter</h1>
-        <p>
-            Pour en apprendre davantage ou si vous avez des questions, n'hésitez
-            pas à me contacter.
+        <p class="spaced">
+            Pour en apprendre davantage sur moi et sur mon parcours, n'hésitez
+            pas à me contacter. <br />Je suis ouverte pour répondre à vos
+            questions.
         </p>
-        <p>
+        <div class="button_div">
             <a href={`mailto:${email}`} class="button button--primary">
                 M'écrire un e-mail
             </a>
@@ -25,7 +27,10 @@ const linkedin = "https://www.linkedin.com/in/roxane-dubus-404545359";
                 class="button button--secondary"
             >
                 Me contacter sur LinkedIn
+                <span class="visually-hidden"
+                    >(s'ouvre dans un nouvel onglet)</span
+                >
             </a>
-        </p>
+        </div>
     </section>
 </BaseLayout>

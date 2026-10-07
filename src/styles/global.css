@@ -57,6 +57,10 @@ p {
     margin: 0 0 var(--space-4) 0;
 }
 
+.spaced {
+    padding-top: var(--space-3);
+}
+
 a {
     color: var(--color-accent);
 }
@@ -123,6 +127,13 @@ main.container {
 .button--secondary:hover,
 .button--secondary:focus-visible {
     background-color: var(--color-bg-muted);
+}
+
+.button_div {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-4);
+    padding-top: var(--space-3);
 }
 
 .visually-hidden {

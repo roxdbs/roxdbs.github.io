@@ -8,7 +8,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 >
     <section class="section">
         <h1>Qui suis-je</h1>
-        <p>
+        <p class="spaced">
             Je suis étudiante en M2 Sciences Cognitives pour l'entreprise à
             l'Université de Lille, après avoir obtenu une licence MIASHS. Je
             m'intéresse à l'application concrète des sciences cognitives à la
@@ -19,16 +19,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             continuer à apprendre ce domaine sur le terrain, encadrée par des
             expert·e·s.
         </p>
-        <a
-            href="/cv-roxane-dubus.pdf"
-            class="button button--primary"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Voir mon CV<span class="visually-hidden"
-                >(s'ouvre dans un nouvel onglet)</span
+        <div class="button_div">
+            <a
+                href="/cv-roxane-dubus.pdf"
+                class="button button--primary"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-        </a>
-        <a href="/contact" class="button button--primary">Me contacter</a>
+                Voir mon CV<span class="visually-hidden"
+                    >(s'ouvre dans un nouvel onglet)</span
+                >
+            </a>
+            <a href="/contact" class="button button--secondary">Me contacter</a>
+        </div>
     </section>
 </BaseLayout>
